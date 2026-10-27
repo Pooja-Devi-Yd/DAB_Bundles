@@ -1,0 +1,41 @@
+# Declarative Automation Bundle configuration, more info here: https://docs.databricks.com/en/dev-tools/bundles/settings.html
+bundle:
+  name: "DabDemo"
+
+include:
+  - src/*.yml
+  - src/env/*.yml
+  - resources/jobs/*.yml
+  - resources/pipelines/*.yml
+  - resources/schemas/*.yml
+permissions:
+  -group_name: de_grp
+  level: CAN_MANAGE
+
+targets:
+  # The 'dev' target, for development purposes. This target is the default.
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-53ff0768-dbd9.cloud.databricks.com
+
+
+qa:
+  default: false
+  workspace:
+    host: https://dbc-53ff0768-dbd9.cloud.databricks.com
+
+
+
+  # # The 'prod' target, used for production deployment.
+  # prod:
+  #   mode: production
+  #   workspace:
+  #     host: https://dbc-53ff0768-dbd9.cloud.databricks.com
+  #     # We always use /Users/poojayad765@gmail.com for all resources to make sure we only have a single copy.
+  #     root_path: /Users/poojayad765@gmail.com/.bundle/${bundle.name}/${bundle.target}
+  #   run_as:
+  #     # This runs as poojayad765@gmail.com in production. We could also use a service principal here,
+  #     # see https://docs.databricks.com/dev-tools/bundles/permissions.html.
+  #     user_name: poojayad765@gmail.com
