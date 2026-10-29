@@ -8,9 +8,10 @@ include:
   - resources/jobs/*.yml
   - resources/pipelines/*.yml
   - resources/schemas/*.yml
+  
 permissions:
-  -group_name: de_grp
-  level: CAN_MANAGE
+  -group_name: "de_grp"
+  level: "CAN_MANAGE"
 
 targets:
   # The 'dev' target, for development purposes. This target is the default.
